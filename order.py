@@ -25,3 +25,6 @@ class OrderedElements():
         new.last_key = self.last_key
         new.max_element = self.max_element
         return new
+
+if __name__ == "__main__":
+    state = OrderedElements()
