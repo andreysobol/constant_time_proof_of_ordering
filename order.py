@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+
 class Element():
     
     def __init__(self, name: str, value: int):
@@ -11,6 +12,7 @@ class Element():
         new = type(self)(self.name, self.value)
         new.next = self.next
         return new
+
 
 class OrderedElements():
 
@@ -25,6 +27,7 @@ class OrderedElements():
         new.last_key = self.last_key
         new.max_element = self.max_element
         return new
+
 
 class InsertProof():
 
@@ -47,6 +50,7 @@ class InsertProof():
         self.replace_next = replace_next
         self.max_element = max_element
         self.last_key = last_key
+
 
 def insert_element(ordered_elements: OrderedElements, element: Element) -> OrderedElements:
     new_key = ordered_elements.last_key + 1
@@ -91,6 +95,7 @@ def insert_element(ordered_elements: OrderedElements, element: Element) -> Order
 
     return new_ordered_elements
 
+
 def apply_insert_proof(ordered_elements: OrderedElements, insert_proof: InsertProof, name: str) -> OrderedElements:
     
     new_ordered_elements = ordered_elements.copy()
@@ -105,6 +110,7 @@ def apply_insert_proof(ordered_elements: OrderedElements, insert_proof: InsertPr
 
     new_ordered_elements.max_element = insert_proof.max_element
     new_ordered_elements.last_key = insert_proof.last_key
+
 
 def check_insert_proof(ordered_elements: OrderedElements, insert_proof: InsertProof) -> (bool, [str]):
 
