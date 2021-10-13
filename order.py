@@ -6,9 +6,7 @@ class Element():
         self.next_index = None
 
     def copy(self):
-        new = type(self)()
-        new.name = self.name
-        new.value = self.value
+        new = type(self)(self.name, self.value)
         new.next_index = self.next_index
         return new
 
