@@ -14,7 +14,7 @@ class UnitTest(unittest.TestCase):
         new = insert_element(oe, Element("name", 120))
         self.assertEqual(1, len(new.set))
 
-    def test_insert_first_el(self):
+    def test_insert_with_different_order(self):
 
         el1 = Element("el1", 1)
         el2 = Element("el2", 2)
