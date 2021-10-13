@@ -54,7 +54,3 @@ def insert_element(ordered_elements, element):
 
         if prev != None :
             new_ordered_elements.set[prev].next_index = new_key
-
-
-if __name__ == "__main__":
-    state = OrderedElements()
