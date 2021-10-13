@@ -21,10 +21,14 @@ class UnitTest(unittest.TestCase):
         el3 = Element("el3", 3)
         el4 = Element("el4", 4)
         ps = permutations([el1, el2, el3, el4], 4)
-        res = [4, 3, 2, 1]
+        rs = [4, 3, 2, 1]
 
         for p in ps:
             oe = reduce(insert_element, p, OrderedElements())
+            index = oe.max_element
+            for r in rs:
+                self.assertEqual(r, oe.set[index].value)
+                index = oe.set[index].next
 
 if __name__ == '__main__':
     unittest.main()
