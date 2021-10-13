@@ -96,7 +96,11 @@ def insert_element(ordered_elements: OrderedElements, element: Element) -> Order
     return new_ordered_elements
 
 
-def apply_insert_proof(ordered_elements: OrderedElements, insert_proof: InsertProof, name: str) -> OrderedElements:
+def apply_insert_proof(
+    ordered_elements: OrderedElements,
+    insert_proof: InsertProof,
+    name: str
+) -> OrderedElements:
     
     new_ordered_elements = ordered_elements.copy()
     new_element = Element(name, insert_proof.value)
