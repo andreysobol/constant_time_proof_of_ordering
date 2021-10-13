@@ -91,6 +91,21 @@ def insert_element(ordered_elements: OrderedElements, element: Element) -> Order
 
     return new_ordered_elements
 
+def apply_insert_proof(ordered_elements: OrderedElements, insert_proof: InsertProof, name: str) -> OrderedElements:
+    
+    new_ordered_elements = ordered_elements.copy()
+    new_element = Element(name, insert_proof.value)
+    new_element.next = insert_proof.current
+    new_ordered_elements.set[insert_proof.element_index] = new_element
+
+    if insert_proof.replace_next_index != None:
+        replaced_element = new_ordered_elements.set[insert_proof.replace_next_index].copy()
+        replaced_element.next = insert_proof.replace_next
+        new_ordered_elements.set[insert_proof.replace_next_index] = replaced_element
+
+    new_ordered_elements.max_element = insert_proof.max_element
+    new_ordered_elements.last_key = insert_proof.last_key
+
 def check_insert_proof(ordered_elements: OrderedElements, insert_proof: InsertProof) -> (bool, [str]):
 
     '''
