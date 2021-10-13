@@ -65,11 +65,6 @@ def find_insert_proof(ordered_elements: OrderedElements, element: Element) -> In
     value = element.value
 
     if ordered_elements.max_element == None:
-        #new_element = element.copy()
-        #new_element.next = None
-        #new_ordered_elements = ordered_elements.copy()
-        #new_ordered_elements.set[new_key] = new_element
-        #new_ordered_elements.last_key = new_key
         prev = None
         current = None
     else:
@@ -92,18 +87,11 @@ def find_insert_proof(ordered_elements: OrderedElements, element: Element) -> In
 
         (prev, current) = find_element(None, ordered_elements.max_element, ordered_elements, element.value)
 
-        #new_element = element.copy()
-        #new_element.next = current
-
-        #new_ordered_elements = ordered_elements.copy()
-        #new_ordered_elements.set[new_key] = new_element
-        #new_ordered_elements.last_key = new_key
 
     if prev != None :
         replace_next_index = prev
         replace_next = element_index
         max_element = ordered_elements.max_element
-        #new_ordered_elements.set[prev].next = new_key
     else:
         replace_next_index = None
         replace_next = None
