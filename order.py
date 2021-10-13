@@ -60,5 +60,35 @@ def insert_element(ordered_elements: OrderedElements, element: Element):
 
     return new_ordered_elements
 
-def check_insert_proof(ordered_elements, insert_proof):
+def check_insert_proof(ordered_elements: OrderedElements, insert_proof):
+
+    '''
+    condition:
+
+    element_index == oe.last_key + 1
+
+    new_last_key = element_index
+
+    if current != None
+        oe.set[current].value < value
+
+    if prev != None:
+        oe.set[prev].value > value
+
+    if prev == None:
+        new_max_element == element_index
+
+    if prev != None:
+        oe.max_element == new_max_element
+
+    if prev != None:
+        replace_next_index = prev
+        replace_next_value == element_index
+    else:
+        replace_next_index = None
+        replace_next_value = None
+
+    apply value name current
+    '''
+
     pass
