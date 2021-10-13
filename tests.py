@@ -1,7 +1,7 @@
 import unittest
 from itertools import permutations
 from functools import reduce
-from order import OrderedElements, Element, InsertProof, insert_element, check_insert_proof
+from order import OrderedElements, Element, InsertProof, insert_element, check_insert_proof, find_insert_proof, apply_insert_proof
 
 class UnitTest(unittest.TestCase):
 
@@ -122,7 +122,21 @@ class UnitTest(unittest.TestCase):
 
         self.assertFalse(check_insert_proof(oe, ip)[0])
         self.assertEqual(len(check_insert_proof(oe, ip)[1]), 5)
+    
+    def test_insert_find_check_apply(self):
 
+        el1 = Element("el1", 1)
+        el2 = Element("el2", 2)
+        el3 = Element("el3", 3)
+        el4 = Element("el4", 4)
+        ps = permutations([el1, el2, el3, el4], 4)
+
+        for p in ps:
+            oe = OrderedElements()
+            for e in p:
+                proof = find_insert_proof(oe, e)
+                self.assertTrue(check_insert_proof(oe, proof)[0])
+                apply_insert_proof(oe, proof, e.name)
 
 if __name__ == '__main__':
     unittest.main()
