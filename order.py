@@ -26,5 +26,28 @@ class OrderedElements():
         new.max_element = self.max_element
         return new
 
+def insert_element(ordered_elements, element):
+    name = element[0]
+    value = element[1]
+    new_key = ordered_elements.last_key + 1
+    if ordered_elements.max_element == None:
+        new_element = element.copy()
+        new_element.next_index = None
+        new_ordered_elements = ordered_elements.copy()
+        new_ordered_elements.set[new_key] = new_element
+        new_ordered_elements.last_key = new_key
+    else:
+        def find_element(prev, current, ordered_elements, value):
+            if ordered_elements[current].value < value :
+                return (prev, current)
+            else:
+                if ordered_elements[current].next == None:
+                    return (current, None)
+                else:
+                    c = ordered_elements[current].next
+                    p = current
+                    return find_element(p, c, ordered_elements, value)
+        (prev, current) = find_element(None, ordered_elements.max_element, ordered_elements, element.value)
+
 if __name__ == "__main__":
     state = OrderedElements()
