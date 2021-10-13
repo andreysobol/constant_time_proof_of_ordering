@@ -51,7 +51,7 @@ class UnitTest(unittest.TestCase):
             last_key = 5,
         )
 
-        check_insert_proof(oe, ip)
+        self.assertTrue(check_insert_proof(oe, ip)[0])
 
 if __name__ == '__main__':
     unittest.main()
