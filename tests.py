@@ -121,6 +121,7 @@ class UnitTest(unittest.TestCase):
         )
 
         self.assertFalse(check_insert_proof(oe, ip)[0])
+        self.assertEqual(len(check_insert_proof(oe, ip)[1]), 5)
 
 
 if __name__ == '__main__':
