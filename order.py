@@ -1,6 +1,6 @@
 class Element():
     
-    def __init__(self, name, value):
+    def __init__(self, name: str, value: int):
         self.name = name
         self.value = value
         self.next = None
@@ -24,7 +24,7 @@ class OrderedElements():
         new.max_element = self.max_element
         return new
 
-def insert_element(ordered_elements, element):
+def insert_element(ordered_elements: OrderedElements, element: Element):
     new_key = ordered_elements.last_key + 1
     if ordered_elements.max_element == None:
         new_element = element.copy()
@@ -34,7 +34,7 @@ def insert_element(ordered_elements, element):
         new_ordered_elements.last_key = new_key
         new_ordered_elements.max_element = new_key
     else:
-        def find_element(prev, current, ordered_elements, value):
+        def find_element(prev: int, current: int, ordered_elements: OrderedElements, value:int):
             if ordered_elements.set[current].value < value :
                 return (prev, current)
             else:
