@@ -136,7 +136,7 @@ class UnitTest(unittest.TestCase):
             for e in p:
                 proof = find_insert_proof(oe, e)
                 self.assertTrue(check_insert_proof(oe, proof)[0])
-                apply_insert_proof(oe, proof, e.name)
+                oe = apply_insert_proof(oe, proof, e.name)
 
 if __name__ == '__main__':
     unittest.main()
