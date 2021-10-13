@@ -133,36 +133,6 @@ def apply_insert_proof(
 
 def check_insert_proof(ordered_elements: OrderedElements, insert_proof: InsertProof) -> (bool, [str]):
 
-    '''
-    condition:
-
-    element_index == oe.last_key + 1
-
-    new_last_key = element_index
-
-    if current != None
-        oe.set[current].value < value
-
-    if prev != None:
-        oe.set[prev].value >= value
-
-    if prev == None:
-        new_max_element == element_index
-
-    if prev != None:
-        oe.max_element == new_max_element
-
-    if prev != None:
-        replace_next_index = prev
-        replace_next == element_index
-    else:
-        replace_next_index = None
-        replace_next = None
-
-    if prev != None:
-        oe.set[prev].next = current
-    '''
-
     conditions = [
         (
             insert_proof.element_index == ordered_elements.last_key + 1,
