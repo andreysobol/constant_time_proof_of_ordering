@@ -29,6 +29,9 @@ class UnitTest(unittest.TestCase):
             for r in rs:
                 self.assertEqual(r, oe.set[index].value)
                 index = oe.set[index].next
+    
+    def test_condition(self):
+        pass
 
 if __name__ == '__main__':
     unittest.main()

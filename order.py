@@ -26,6 +26,28 @@ class OrderedElements():
         new.max_element = self.max_element
         return new
 
+class InsertProof():
+
+    def __init__(
+        self,
+        element_index: int,
+        value: int,
+        prev: int,
+        current: int,
+        replace_next_index: int,
+        replace_next: int,
+        max_element: int,
+        last_key: int,
+    ):
+        self.element_index = element_index
+        self.value = value
+        self.prev = prev
+        self.current = current
+        self.replace_next_index = replace_next_index
+        self.replace_next = replace_next
+        self.max_element = max_element
+        self.last_key = last_key
+
 def insert_element(ordered_elements: OrderedElements, element: Element) -> OrderedElements:
     new_key = ordered_elements.last_key + 1
     if ordered_elements.max_element == None:
@@ -85,10 +107,10 @@ def check_insert_proof(ordered_elements: OrderedElements, insert_proof):
 
     if prev != None:
         replace_next_index = prev
-        replace_next_value == element_index
+        replace_next == element_index
     else:
         replace_next_index = None
-        replace_next_value = None
+        replace_next = None
 
     if prev != None:
         oe.set[prev].next = current
@@ -130,12 +152,12 @@ def check_insert_proof(ordered_elements: OrderedElements, insert_proof):
         ),
         (
             (insert_proof.prev == None) or 
-            (insert_proof.replace_next_value == insert_proof.element_index),
+            (insert_proof.replace_next == insert_proof.element_index),
             "Incorrect replace_next_value",
         ),
         (
             (insert_proof.prev != None) or 
-            (insert_proof.replace_next_value == None),
+            (insert_proof.replace_next == None),
             "Non null replace_next_value",
         ),
         (
