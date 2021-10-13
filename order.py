@@ -140,6 +140,8 @@ def apply_insert_proof(
     new_ordered_elements.max_element = insert_proof.max_element
     new_ordered_elements.last_key = insert_proof.last_key
 
+    return new_ordered_elements
+
 
 def check_insert_proof(ordered_elements: OrderedElements, insert_proof: InsertProof) -> (bool, [str]):
 
