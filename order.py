@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 class Element():
     
     def __init__(self, name: str, value: int):
@@ -5,7 +7,7 @@ class Element():
         self.value = value
         self.next = None
 
-    def copy(self):
+    def copy(self) -> self:
         new = type(self)(self.name, self.value)
         new.next = self.next
         return new
@@ -17,14 +19,14 @@ class OrderedElements():
         self.last_key = 0
         self.max_element = None
 
-    def copy(self):
+    def copy(self) -> self:
         new = type(self)()
         new.set = self.set.copy()
         new.last_key = self.last_key
         new.max_element = self.max_element
         return new
 
-def insert_element(ordered_elements: OrderedElements, element: Element):
+def insert_element(ordered_elements: OrderedElements, element: Element) -> OrderedElements:
     new_key = ordered_elements.last_key + 1
     if ordered_elements.max_element == None:
         new_element = element.copy()
