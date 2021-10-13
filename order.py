@@ -32,6 +32,7 @@ def insert_element(ordered_elements, element):
         new_ordered_elements = ordered_elements.copy()
         new_ordered_elements.set[new_key] = new_element
         new_ordered_elements.last_key = new_key
+        new_ordered_elements.max_element = new_key
     else:
         def find_element(prev, current, ordered_elements, value):
             if ordered_elements[current].value < value :
@@ -54,4 +55,7 @@ def insert_element(ordered_elements, element):
 
         if prev != None :
             new_ordered_elements.set[prev].next_index = new_key
+        else:
+            new_ordered_elements.max_element = new_key
+
     return new_ordered_elements
