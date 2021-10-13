@@ -98,6 +98,29 @@ class UnitTest(unittest.TestCase):
         )
 
         self.assertTrue(check_insert_proof(oe, ip)[0])
+    
+    def test_check_insert_proof_wrong(self):
+
+        el1 = Element("el1", 1)
+        el2 = Element("el2", 2)
+        el3 = Element("el3", 3)
+        el4 = Element("el4", 4)
+
+        p = [el4, el3, el2, el1]
+        oe = reduce(insert_element, p, OrderedElements())
+
+        ip = InsertProof(
+            element_index = 1,
+            value = 2,
+            prev = 3,
+            current = 4,
+            replace_next_index = 5,
+            replace_next = 6,
+            max_element = 7,
+            last_key = 8,
+        )
+
+        self.assertFalse(check_insert_proof(oe, ip)[0])
 
 
 if __name__ == '__main__':
