@@ -85,8 +85,12 @@ def find_insert_proof(ordered_elements: OrderedElements, element: Element) -> In
                     p = current
                     return find_element(p, c, ordered_elements, value)
 
-        (prev, current) = find_element(None, ordered_elements.max_element, ordered_elements, element.value)
-
+        (prev, current) = find_element(
+            None,
+            ordered_elements.max_element,
+            ordered_elements,
+            element.value
+        )
 
     if prev != None :
         replace_next_index = prev
