@@ -30,7 +30,30 @@ class UnitTest(unittest.TestCase):
                 self.assertEqual(r, oe.set[index].value)
                 index = oe.set[index].next
     
-    def test_condition(self):
+    def test_check_insert_proof_b(self):
+
+        el2 = Element("el2", 2)
+        el3 = Element("el3", 3)
+        el4 = Element("el4", 4)
+        el5 = Element("el5", 5)
+
+        p = [el5, el4, el3, el2]
+        oe = reduce(insert_element, p, OrderedElements())
+
+        ip = InsertProof(
+            element_index = 5,
+            value = 1,
+            prev = 4,
+            current = None,
+            replace_next_index = 4,
+            replace_next = 5,
+            max_element = 1,
+            last_key = 5,
+        )
+
+        self.assertTrue(check_insert_proof(oe, ip)[0])
+
+    def test_check_insert_proof_m(self):
 
         el1 = Element("el1", 1)
         el2 = Element("el2", 2)
@@ -52,6 +75,7 @@ class UnitTest(unittest.TestCase):
         )
 
         self.assertTrue(check_insert_proof(oe, ip)[0])
+
 
 if __name__ == '__main__':
     unittest.main()
