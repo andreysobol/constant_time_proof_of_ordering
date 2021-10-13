@@ -161,9 +161,8 @@ def check_insert_proof(ordered_elements: OrderedElements, insert_proof: InsertPr
 
     if prev != None:
         oe.set[prev].next = current
-
-    apply value name current
     '''
+
     conditions = [
         (
             insert_proof.element_index == ordered_elements.last_key + 1,
