@@ -53,47 +53,8 @@ class InsertProof():
 
 
 def insert_element(ordered_elements: OrderedElements, element: Element) -> OrderedElements:
-    new_key = ordered_elements.last_key + 1
-    if ordered_elements.max_element == None:
-        new_element = element.copy()
-        new_element.next = None
-        new_ordered_elements = ordered_elements.copy()
-        new_ordered_elements.set[new_key] = new_element
-        new_ordered_elements.last_key = new_key
-        new_ordered_elements.max_element = new_key
-    else:
-
-        def find_element(
-            prev: int,
-            current: int,
-            ordered_elements: OrderedElements,
-            value:int
-        ) -> (int, int):
-            if ordered_elements.set[current].value < value :
-                return (prev, current)
-            else:
-                if ordered_elements.set[current].next == None:
-                    return (current, None)
-                else:
-                    c = ordered_elements.set[current].next
-                    p = current
-                    return find_element(p, c, ordered_elements, value)
-
-        (prev, current) = find_element(None, ordered_elements.max_element, ordered_elements, element.value)
-
-        new_element = element.copy()
-        new_element.next = current
-
-        new_ordered_elements = ordered_elements.copy()
-        new_ordered_elements.set[new_key] = new_element
-        new_ordered_elements.last_key = new_key
-
-        if prev != None :
-            new_ordered_elements.set[prev].next = new_key
-        else:
-            new_ordered_elements.max_element = new_key
-
-    return new_ordered_elements
+    proof = find_insert_proof(ordered_elements, element)
+    return apply_insert_proof(ordered_elements, proof, element.name)
 
 
 def find_insert_proof(ordered_elements: OrderedElements, element: Element) -> InsertProof:
