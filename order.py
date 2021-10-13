@@ -59,3 +59,6 @@ def insert_element(ordered_elements, element):
             new_ordered_elements.max_element = new_key
 
     return new_ordered_elements
+
+def check_insert_proof(ordered_elements, insert_proof):
+    pass
