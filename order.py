@@ -27,8 +27,6 @@ class OrderedElements():
         return new
 
 def insert_element(ordered_elements, element):
-    name = element[0]
-    value = element[1]
     new_key = ordered_elements.last_key + 1
     if ordered_elements.max_element == None:
         new_element = element.copy()
