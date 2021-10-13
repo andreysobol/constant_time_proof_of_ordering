@@ -10,6 +10,7 @@ class UnitTest(unittest.TestCase):
         oe = OrderedElements()
         self.assertEqual(len({}), len(oe.set))
         new = insert_element(oe, Element("name", 120))
+        self.assertEqual(1, len(new.set))
 
 if __name__ == '__main__':
     unittest.main()
