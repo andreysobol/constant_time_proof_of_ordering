@@ -49,5 +49,16 @@ def insert_element(ordered_elements, element):
                     return find_element(p, c, ordered_elements, value)
         (prev, current) = find_element(None, ordered_elements.max_element, ordered_elements, element.value)
 
+        new_element = element.copy()
+        new_element.next_index = current
+
+        new_ordered_elements = ordered_elements.copy()
+        new_ordered_elements.set[new_key] = new_element
+        new_ordered_elements.last_key = new_key
+
+        if prev != None :
+            new_ordered_elements.set[prev].next_index = new_key
+
+
 if __name__ == "__main__":
     state = OrderedElements()
