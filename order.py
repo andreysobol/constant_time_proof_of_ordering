@@ -84,7 +84,7 @@ def insert_element(ordered_elements: OrderedElements, element: Element) -> Order
 
     return new_ordered_elements
 
-def check_insert_proof(ordered_elements: OrderedElements, insert_proof):
+def check_insert_proof(ordered_elements: OrderedElements, insert_proof: InsertProof) -> (bool, [str]):
 
     '''
     condition:
@@ -167,4 +167,4 @@ def check_insert_proof(ordered_elements: OrderedElements, insert_proof):
         ),
     ]
 
-    pass
+    return (True, [])

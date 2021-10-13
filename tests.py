@@ -1,7 +1,7 @@
 import unittest
 from itertools import permutations
 from functools import reduce
-from order import OrderedElements, Element, insert_element, check_insert_proof
+from order import OrderedElements, Element, InsertProof, insert_element, check_insert_proof
 
 class UnitTest(unittest.TestCase):
 
@@ -31,7 +31,27 @@ class UnitTest(unittest.TestCase):
                 index = oe.set[index].next
     
     def test_condition(self):
-        pass
+
+        el1 = Element("el1", 1)
+        el2 = Element("el2", 2)
+        el4 = Element("el4", 4)
+        el5 = Element("el5", 5)
+
+        p = [el5, el4, el2, el1]
+        oe = reduce(insert_element, p, OrderedElements())
+
+        ip = InsertProof(
+            element_index = 5,
+            value = 3,
+            prev = 2,
+            current = 3,
+            replace_next_index = 2,
+            replace_next = 5,
+            max_element = 1,
+            last_key = 5,
+        )
+
+        check_insert_proof(oe, ip)
 
 if __name__ == '__main__':
     unittest.main()
