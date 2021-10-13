@@ -167,7 +167,7 @@ def check_insert_proof(ordered_elements: OrderedElements, insert_proof: InsertPr
         ),
     ]
 
-    if all([i[0] for i in conditions]):
-        return (True, [])
-
-    return (False, [])
+    return (
+        all([i[0] for i in conditions]),
+        [i[1] for i in conditions if not i[0]]
+    )
