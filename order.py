@@ -96,6 +96,70 @@ def insert_element(ordered_elements: OrderedElements, element: Element) -> Order
     return new_ordered_elements
 
 
+def find_insert_proof(ordered_elements: OrderedElements, element: Element) -> InsertProof:
+
+    last_key = ordered_elements.last_key + 1
+    element_index = last_key
+
+    value = element.value
+
+    if ordered_elements.max_element == None:
+        #new_element = element.copy()
+        #new_element.next = None
+        #new_ordered_elements = ordered_elements.copy()
+        #new_ordered_elements.set[new_key] = new_element
+        #new_ordered_elements.last_key = new_key
+        prev = None
+        current = None
+    else:
+
+        def find_element(
+            prev: int,
+            current: int,
+            ordered_elements: OrderedElements,
+            value:int
+        ) -> (int, int):
+            if ordered_elements.set[current].value < value :
+                return (prev, current)
+            else:
+                if ordered_elements.set[current].next == None:
+                    return (current, None)
+                else:
+                    c = ordered_elements.set[current].next
+                    p = current
+                    return find_element(p, c, ordered_elements, value)
+
+        (prev, current) = find_element(None, ordered_elements.max_element, ordered_elements, element.value)
+
+        #new_element = element.copy()
+        #new_element.next = current
+
+        #new_ordered_elements = ordered_elements.copy()
+        #new_ordered_elements.set[new_key] = new_element
+        #new_ordered_elements.last_key = new_key
+
+    if prev != None :
+        replace_next_index = prev
+        replace_next = element_index
+        max_element = ordered_elements.max_element
+        #new_ordered_elements.set[prev].next = new_key
+    else:
+        replace_next_index = None
+        replace_next = None
+        max_element = element_index
+
+    return InsertProof(
+        element_index = element_index,
+        value = value,
+        prev = prev,
+        current = current,
+        replace_next_index = replace_next_index,
+        replace_next = replace_next,
+        max_element = max_element,
+        last_key = last_key,
+    )
+
+
 def apply_insert_proof(
     ordered_elements: OrderedElements,
     insert_proof: InsertProof,
