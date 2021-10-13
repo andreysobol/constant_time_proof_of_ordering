@@ -1,7 +1,7 @@
 import unittest
 from itertools import permutations
 from functools import reduce
-from order import OrderedElements, Element, insert_element
+from order import OrderedElements, Element, insert_element, check_insert_proof
 
 class UnitTest(unittest.TestCase):
 

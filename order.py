@@ -75,7 +75,7 @@ def check_insert_proof(ordered_elements: OrderedElements, insert_proof):
         oe.set[current].value < value
 
     if prev != None:
-        oe.set[prev].value > value
+        oe.set[prev].value >= value
 
     if prev == None:
         new_max_element == element_index
@@ -90,7 +90,59 @@ def check_insert_proof(ordered_elements: OrderedElements, insert_proof):
         replace_next_index = None
         replace_next_value = None
 
+    if prev != None:
+        oe.set[prev].next = current
+
     apply value name current
     '''
+    conditions = [
+        (
+            insert_proof.element_index == ordered_elements.last_key + 1,
+            "Incorrect element_index",
+        ),
+        (
+            insert_proof.last_key == insert_proof.element_index,
+            "Incorrect last_key",
+        ),
+        (
+            (insert_proof.current == None) or 
+            (insert_proof.value > ordered_elements.set[insert_proof.current].value),
+            "Incorrect current position",
+        ),
+        (
+            (insert_proof.prev == None) or 
+            (insert_proof.value <= ordered_elements.set[insert_proof.prev].value),
+            "Incorrect prev position",
+        ),
+        (
+            (insert_proof.prev != None) or 
+            (insert_proof.element_index == insert_proof.max_element),
+            "Non replaced max_element",
+        ),
+        (
+            (insert_proof.prev == None) or 
+            (ordered_elements.max_element == insert_proof.max_element),
+            "Replaced max_element",
+        ),
+        (
+            (insert_proof.replace_next_index == insert_proof.prev),
+            "Incorrect replace_next_index",
+        ),
+        (
+            (insert_proof.prev == None) or 
+            (insert_proof.replace_next_value == insert_proof.element_index),
+            "Incorrect replace_next_value",
+        ),
+        (
+            (insert_proof.prev != None) or 
+            (insert_proof.replace_next_value == None),
+            "Non null replace_next_value",
+        ),
+        (
+            (insert_proof.prev == None) or 
+            (insert_proof.current == ordered_elements.set[insert_proof.prev].next),
+            "Incorrect prev.next",
+        ),
+    ]
 
     pass
